@@ -37,77 +37,44 @@
     <table class="table table-striped table-bordered">
     <thead> 
         <tr> 
+      
             <th scope="col">id_jenis</th>
             <th scope="col">nama_jenis</th>
             
         </tr>
     </thead>
-    <tbody> 
-        <tr>
-        <td >22</td>
-        <td>sendal</td>
-        <td></td>
-        <td>
-        <a href=""class="btn-warning">edit</a>
-        <a href=""class="btn-warning">hapus</a>
-        <tr>
-        </td>
-        </tr>
-        <tr>
-        <td>25</td>
-        <td>sepatu</td>
-        <td></td>
-        <td>
-        <a href=""class="btn-warning">edit</a>
-        <a href=""class="btn-warning">hapus</a>
-        <tr>
-        </td>
-        </tr>
-        
-        <tr>
-        <td>50</td>
-        <td>baju</td>
-        <td></td>
-        <td>
-        <a href=""class="btn-warning">edit</a>
-        <a href=""class="btn-warning">hapus</a>
-        <tr>
-        </td>
-        </tr>
-        
-        <tr>
-        <td>75</td>
-        <td>kerudung</td>
-        <td></td>
-        <td>
-        <a href=""class="btn-warning">edit</a>
-        <a href=""class="btn-warning">hapus</a>
-        <tr>
-        </td>
+    <tbody>
+  <?php
+                include "../../config/koneksi.php";
+                $query = mysqli_query($conn, "SELECT * FROM jenis");
+                $no = 1;
 
-        </tr>
-
-        
-        </tr>
-        
-        <tr>
-        <td>77</td>
-        <td>seragam</td>
-        <td></td>
-        <td>
-        <a href=""class="btn-warning">edit</a>
-        <a href=""class="btn-warning">hapus</a>
-        <tr>
-        </td>
-
-        </tr>
-
-
-            
-
-        </td>
-        </table>
-    </tbody>
+                if (mysqli_num_rows($query) > 0) {
+                    while ($result = mysqli_fetch_assoc($query)) {
+                        ?>
+                        <tr>
+                            <td><?php echo $no; ?></td>
+                            
+                           
+                            <td><?php echo $result['nama_jenis']; ?></td>
+                            
+                            <td> 
+                              <a class="btn btn-warning" href="view_edit.php?id=<?php echo $result['id_jenis']?>">
+                                <i class="fa-solid fa-pen-to-square"></i>Edit </a>
+                                <a href="proses_hapus.php?id=<?php echo $result['nama_jenis'];?>"
+                                onclick="return confirm('yakin?')"
+                                class="btn btn-danger btn-sm">hapus</a>
+                            </td>
+                            
+                        </tr>
+                        <?php
+                        $no++;
+                    }
+                } else {
+                    echo "<tr><td colspan='7' class='text-center'>Data siswa tidak ditemukan</td></tr>";
+                }
+                ?>
+  </tbody>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

@@ -28,7 +28,7 @@
 
 <div class="container"> 
   <h1>Data Barang Sandrina</h1>
-  <a href="view_tambah.php" class="btn btn-primary">Tambah Data Barang Baru</a>
+  <a href="view_tambah.php" class="btn btn-primary"> </i>>Tambah Data Barang Baru</a>
 <table class="table">
   <thead>
     <tr>
@@ -55,13 +55,14 @@
                             <td><?php echo $result['id_jenis']; ?></td>
                             <td><?php echo $result['harga']; ?></td>
                             <td><?php echo $result['stok']; ?></td>
-
-                            <td>
-                            <a href="view_edit.php?id=<?php echo $result['id_barang'] ?>" class="btn btn-warning">Edit</a>
-                            <a href="hapus.php?id=<?php echo $result['id_barang'] ?>" 
-                            onclick="return confirm('Kamu Yakin???')" 
-                            class="btn btn-danger">Hapus</a>
+                            <td> 
+                              <a class="btn btn-warning" href="view_edit.php?id=<?php echo $result['id_barang']?>">
+                                <i class="fa-solid fa-pen-to-square"></i>Edit </a>
+                                <a href="proses_hapus.php?id=<?php echo $result['id_barang'];?>"
+                                onclick="return confirm('yakin?')"
+                                class="btn btn-danger btn-sm">hapus</a>
                             </td>
+                            
                         </tr>
                         <?php
                         $no++;
